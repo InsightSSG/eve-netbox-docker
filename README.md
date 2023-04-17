@@ -52,7 +52,7 @@ apt install eve-ng-dind
 8. Run the following commands
 ```
 git clone -b release https://github.com/InsightSSG/eve-netbox-docker.git
-cd netbox-docker
+cd eve-netbox-docker
 docker-compose pull
 docker-compose up
 ```
