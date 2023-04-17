@@ -1,11 +1,9 @@
 version: '3.4'
 services:
-  nginx:
+  netbox:
     ports:
       - 8000:8080
       - 21:21
-    restart: always
-  netbox:
     restart: always
   netbox-worker:
     restart: always
