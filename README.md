@@ -27,6 +27,50 @@ please join [our Slack][netbox-docker-slack] and ask for help in the [`#netbox-d
 
 ## Quickstart
 
+Quickstart
+EVE-NG Users
+First make sure that the docker-in-docker container is installed
+apt update
+apt install eve-ng-dind
+
+Create a new lab
+
+Add the DinD node to the lab.
+
+Edit the node and check the box allowing DHCP on the eth0 interface
+Set the console to Telnet
+Add an outbound network to the lab (Management Cloud0 or NAT)
+
+Connect the node to the cloud
+
+Turn on the node
+
+Connect to the console
+
+Run the following commands
+
+git clone -b release https://github.com/DataKnox/netbox-docker.git
+cd netbox-docker
+docker-compose pull
+docker-compose up
+Run ip addr to see what the IP address of the node is
+If using cloud0, wait a few minutes for Netbox to start and connect to the device http://IPADD:8000
+If using NAT, add another container like Firefox to the topology, enable DHCP on the container, and access the address like above
+SSH into EVE-NG
+
+Run the following command
+
+dc ps -a
+You should see your DinD container running
+Copy the Container ID
+Stop BUT DO NOT Wipe the container in the topology
+
+Run the following command in the EVE-NG terminal
+
+dc commit <CONTAINER-ID-GOES-HERE> eve-netbox
+this will take several minutes because Netbox is over 5GB
+You now have Netbox in EVE-NG
+
 To get _NetBox Docker_ up and running run the following commands.
 There is a more complete [_Getting Started_ guide on our wiki][wiki-getting-started] which explains every step.
 
